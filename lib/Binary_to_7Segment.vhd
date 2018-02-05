@@ -35,8 +35,7 @@ begin
         when X"C" => r_Hex_Encoding <= X"4E";
         when X"D" => r_Hex_Encoding <= X"3D";
         when X"E" => r_Hex_Encoding <= X"4F";
-        when X"F" => r_Hex_Encoding <= X"47";
-        when others => r_Hex_Encoding <= X"00";
+        when others => r_Hex_Encoding <= X"47";
       end case;
     end if;
   end process;

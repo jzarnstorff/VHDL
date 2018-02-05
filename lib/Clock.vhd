@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-pntity clock is
+entity clock is
   generic (
     g_Clock_Count : integer);
   port (
