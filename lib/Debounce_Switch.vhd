@@ -35,7 +35,7 @@ begin
 
       end if;
     end if;
-  end process p_debounce;
+  end process p_Debounce;
 
   o_Switch <= r_State;
 
