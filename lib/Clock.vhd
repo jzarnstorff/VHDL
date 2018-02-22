@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 
 entity clock is
   generic (
-    g_Clock_Count : integer);
+    g_Clock_Count : positive);
   port (
     i_Clk : in  std_logic;
     o_Clk : out std_logic);
