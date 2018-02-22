@@ -14,7 +14,7 @@ end Clock_Logic;
 
 architecture RTL of Clock_Logic is
 
-    signal hrs : integer range 1 to 12 := 12;
+    signal hrs : integer range 0 to 12 := 1;
     signal sec, min : integer range 0 to 60 := 0;
     signal r_Count : integer := 1;
     signal w_Clk_1Hz : std_logic := '0';
@@ -44,7 +44,7 @@ begin
                 min <= 0;
                 hrs <= hrs + 1;
             end if;
-            if (hrs = 12) then
+            if (hrs > 12) then
                 hrs <= 1;
             end if;
         end if;
