@@ -44,7 +44,7 @@ begin
                 min <= 0;
                 hrs <= hrs + 1;
             end if;
-            if (hrs > 12) then
+            if (hrs = 12) then
                 hrs <= 1;
             end if;
         end if;
