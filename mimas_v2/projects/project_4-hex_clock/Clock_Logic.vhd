@@ -6,6 +6,8 @@ entity Clock_Logic is
     generic ( g_Clk_Freq : positive);
     port (
         i_Clk : in std_logic;
+        i_Btn_Min : in std_logic;
+        i_Btn_Hrs : in std_logic;
         o_Seconds : out std_logic_vector(5 downto 0);
         o_Minutes : out std_logic_vector(7 downto 0);
         o_Hours : out std_logic_vector(3 downto 0));
@@ -32,11 +34,11 @@ begin
         end if;
     end process p_1Hz_Clock;
 
-    p_Real_Clock : process(w_Clk_1Hz)
+    p_Real_Clock : process(w_Clk_1Hz, i_Btn_Min, i_Btn_Hrs)
     begin
         if rising_edge(w_Clk_1Hz) then
             sec <= sec + 1;
-            if (sec = 59)then
+            if (sec = 59 or i_Btn_Min = '0') then
                 sec <= 0;
                 min <= min + 1;
                 if (min >= 59) then
@@ -45,6 +47,12 @@ begin
                     if (hrs >= 12) then
                         hrs <= 1;
                     end if;
+                end if;
+        elsif (i_Btn_Hrs = '0') then
+            hrs <= hrs + 1;
+            sec <= 0;
+                if (hrs >= 12) then
+                    hrs <= 1;
                 end if;
             end if;
         end if;
